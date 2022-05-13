@@ -1,0 +1,22 @@
+###
+# GET请求
+GET http://{{host}}/api/get?name={{name}}
+
+###
+
+# POST请求
+POST http://{{host}}/api/post/kv
+Content-Type: application/x-www-form-urlencoded
+
+name=zhangsan&age=11
+###
+
+# POST请求
+POST http://{{host}}/api/post/json
+Content-Type: application/json
+referer: https://goframe.org/
+cookie: name=zhangsan; age=11
+
+{"name":"zhangsan","age":11}
+###
+

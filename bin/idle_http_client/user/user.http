@@ -1,0 +1,73 @@
+# POST add
+POST http://{{host}}/user/add
+Content-Type: application/json
+referer: https://goframe.org/
+
+{"uid":"1234"}
+
+> {%
+    client.log(JSON.stringify(response.body));
+
+	client.test("Request executed successfully", function() {
+		client.assert(response.status === 200, "Response status is not 200");
+	});
+
+%}
+
+###
+
+
+# POST delete
+POST http://{{host}}/user/delete
+Content-Type: application/json
+referer: https://goframe.org/
+
+{"uid":"1234"}
+
+> {%
+    client.log(JSON.stringify(response.body));
+
+	client.test("Request executed successfully", function() {
+		client.assert(response.status === 200, "Response status is not 200");
+	});
+
+%}
+
+###
+
+# POST modify
+POST http://{{host}}/user/modify
+Content-Type: application/json
+referer: https://goframe.org/
+
+{"uid":"1234","passWord":"boyaa", "nickName":"空昵称"}
+
+> {%
+    client.log(JSON.stringify(response.body));
+
+	client.test("Request executed successfully", function() {
+		client.assert(response.status === 200, "Response status is not 200");
+	});
+
+%}
+
+###
+
+
+# POST select
+POST http://{{host}}/user/select
+Content-Type: application/json
+referer: https://goframe.org/
+
+{"uid":"1234"}
+
+> {%
+    client.log(JSON.stringify(response.body));
+
+	client.test("Request executed successfully", function() {
+		client.assert(response.status === 200, "Response status is not 200");
+	});
+
+%}
+
+###
