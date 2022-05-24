@@ -13,7 +13,6 @@ import (
 	"io/ioutil"
 	"net"
 	"net/http"
-	"os"
 	"runtime"
 	"strconv"
 	"strings"
