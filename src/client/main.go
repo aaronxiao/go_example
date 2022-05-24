@@ -172,14 +172,14 @@ func main() {
 	}
 	conf.InitConfig(path + "\\config.ini")
 
-	addr := "127.0.0.1:30000"
-	tcpAddr := conf.ReadConf("host", "tcpAddr")
-	tcpPort := conf.ReadConf("host","tcpPort")
-
-	if len(tcpAddr) > 0 && len(tcpPort) > 0{
-		addr = fmt.Sprintf("%s:%s", tcpAddr, tcpPort)
-	}
-	for i := 0; i < 6000; i++ {
+	addr := "192.168.56.101:9002"
+	//tcpAddr := conf.ReadConf("host", "tcpAddr")
+	//tcpPort := conf.ReadConf("host","tcpPort")
+	//
+	//if len(tcpAddr) > 0 && len(tcpPort) > 0{
+	//	addr = fmt.Sprintf("%s:%s", tcpAddr, tcpPort)
+	//}
+	for i := 0; i < 100; i++ {
 		wg1.Add(1)
 		go HandleTcp(addr)
 		time.Sleep(time.Microsecond * 1000)

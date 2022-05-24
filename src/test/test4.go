@@ -4,7 +4,10 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"math/rand"
 	"strconv"
+	"sync"
+	"time"
 )
 
 
@@ -67,6 +70,7 @@ func spec(s fmt.State, c rune) string {
 
 
 func main() {
+	rand.Seed(time.Now().UnixNano())
 	var detailError DetailError
 
 	detailError.msg = "test"
@@ -74,5 +78,22 @@ func main() {
 	detailError.err = errors.New("1111")
 
 	fmt.Println(detailError)
+	res := 90
+	res -= -90
 
+	fmt.Println(res)
+
+	fmt.Println( rand.Int31n(11) )
+
+	var WeightPlayTypeProtect    sync.Map // int bool 是否付费返钱保护
+	WeightPlayTypeProtect.Store(1, true)
+	WeightPlayTypeProtect.Store(2, true)
+
+	WeightPlayTypeProtect.Range(func(key, value interface{}) bool {
+		if value.(bool) {
+			fmt.Printf("fine card protect type %v \n", value)
+			return true
+		}
+		return true
+	})
 }
