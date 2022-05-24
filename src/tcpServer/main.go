@@ -13,6 +13,7 @@ import (
 	"io/ioutil"
 	"net"
 	"net/http"
+	"os"
 	"runtime"
 	"strconv"
 	"strings"
@@ -211,7 +212,11 @@ func main() {
 		return
 	}
 
-	conf.InitConfig(path + "\\config.ini" )
+	if runtime.GOOS != "windows"  {
+		conf.InitConfig(path + "//config.ini" )
+	}else {
+		conf.InitConfig(path + "\\config.ini" )
+	}
 	tcpAddr := conf.ReadConf("host", "tcpAddr")
 	tcpPort := conf.ReadConf("host", "tcpPort")
 	if len(tcpAddr) == 0 || len(tcpPort) == 0{
