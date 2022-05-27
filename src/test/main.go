@@ -2,25 +2,24 @@ package main
 
 import (
 	"fmt"
-	"time"
 )
 
+// Animal has a Name and an Age to represent an animal.
+type Animal struct {
+	Name string
+	Age  uint
+}
 
+// String makes Animal satisfy the Stringer interface.
+func (a Animal) String() string {
+	return fmt.Sprintf("%v (%d)", a.Name, a.Age)
+}
 
 func main() {
-	d := time.Duration(time.Second*2)
-	t := time.NewTimer(d)
-	defer t.Stop()
-	for {
-		select {
-		case <- t.C:
-			fmt.Println("timeout...")
-			return
-		default:
-			fmt.Println("Not timeout...")
-			time.Sleep(time.Second * 1)
-			t.Reset(time.Second*2)
-
-		}
+	a := Animal{
+		Name: "Gopher",
+		Age:  2,
 	}
+	fmt.Println(a)
+	// Output: Gopher (2)
 }
