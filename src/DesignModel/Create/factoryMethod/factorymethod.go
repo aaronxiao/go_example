@@ -30,19 +30,23 @@ func (o *OperatorBase) SetB(b int) {
 //PlusOperatorFactory 是 PlusOperator 的工厂类
 type PlusOperatorFactory struct{}
 
+var _ OperatorFactory = new(PlusOperatorFactory)
+
 func (PlusOperatorFactory) Create() Operator {
 	return &PlusOperator{
 		OperatorBase: &OperatorBase{},
 	}
 }
 
+var _ Operator = new(PlusOperator)
+
 //PlusOperator Operator 的实际加法实现
 type PlusOperator struct {
-	*OperatorBase //匿名组合
+	*OperatorBase 				//匿名组合
 }
 
 //Result 获取结果
-func (o PlusOperator) Result() int {
+func (o *PlusOperator) Result() int {
 	return o.a + o.b
 }
 
@@ -58,6 +62,8 @@ func (o *PlusOperator) SetA(a int) {
 //MinusOperatorFactory 是 MinusOperator 的工厂类
 type MinusOperatorFactory struct{}
 
+var _ OperatorFactory = new(MinusOperatorFactory)
+
 func (MinusOperatorFactory) Create() Operator {
 	return &MinusOperator{
 		OperatorBase: &OperatorBase{},
@@ -69,7 +75,9 @@ type MinusOperator struct {
 	*OperatorBase //匿名组合
 }
 
+var _ Operator = new(MinusOperator)
+
 //Result 获取结果
-func (o MinusOperator) Result() int {
+func (o *MinusOperator) Result() int {
 	return o.a - o.b
 }

@@ -1,7 +1,9 @@
 package state
 
-
 import "fmt"
+
+
+//用于分离状态和行为
 
 type Week interface {
 	Today()
@@ -9,7 +11,7 @@ type Week interface {
 }
 
 type DayContext struct {
-	today Week
+	today Week					//接口类型  指向具体星期几
 }
 
 func NewDayContext() *DayContext {

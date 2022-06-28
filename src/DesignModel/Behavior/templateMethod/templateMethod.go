@@ -2,13 +2,10 @@ package templateMethod
 
 import "fmt"
 
+//使用继承机制，把通用步骤和通用方法放到父类中，把具体实现延迟到子类中实现。使得实现符合开闭原则
+
 type Downloader interface {
 	Download(uri string)
-}
-
-type template struct {
-	implement
-	uri string
 }
 
 type implement interface {
@@ -16,11 +13,17 @@ type implement interface {
 	save()
 }
 
+type template struct {
+	implement
+	uri string
+}
+
 func newTemplate(impl implement) *template {
 	return &template{
 		implement: impl,
 	}
 }
+var _ implement = new(template)
 
 func (t *template) Download(uri string) {
 	t.uri = uri
@@ -30,7 +33,7 @@ func (t *template) Download(uri string) {
 	fmt.Print("finish downloading\n")
 }
 
-func (t *template) save() {
+func (t *template) save() {					//实现了一个通过save方法
 	fmt.Print("default save\n")
 }
 
@@ -54,7 +57,7 @@ func (*HTTPDownloader) save() {
 }
 
 type FTPDownloader struct {
-	*template
+	*template				//指针类型也可以继承save方法
 }
 
 func NewFTPDownloader() Downloader {

@@ -2,11 +2,11 @@ package bridge
 
 import "fmt"
 
-type AbstractMessage interface {
+type AbstractMessage interface {			//抽象部分
 	SendMessage(text, to string)
 }
 
-type MessageImplementer interface {
+type MessageImplementer interface {			//实现部分   实现消息的发送
 	Send(text, to string)
 }
 
@@ -30,7 +30,7 @@ func (*MessageEmail) Send(text, to string) {
 	fmt.Printf("send %s to %s via Email", text, to)
 }
 
-type CommonMessage struct {
+type CommonMessage struct {			//抽象类
 	method MessageImplementer
 }
 
@@ -44,7 +44,7 @@ func (m *CommonMessage) SendMessage(text, to string) {
 	m.method.Send(text, to)
 }
 
-type UrgencyMessage struct {
+type UrgencyMessage struct {        //抽象类
 	method MessageImplementer
 }
 

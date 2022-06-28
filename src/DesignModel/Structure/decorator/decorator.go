@@ -1,5 +1,8 @@
 package decorator
 
+//使用对象组合的方式动态改变或增加对象行为
+
+
 type Component interface {
 	Calc() int
 }

@@ -51,4 +51,9 @@ func init() {
 		name: "type1",
 	}
 	manager.Set("t1", t1)
+
+	t2 := &Type2{
+		name: "type2",
+	}
+	manager.Set("t2", t2)
 }

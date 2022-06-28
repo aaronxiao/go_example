@@ -1,5 +1,7 @@
 package adapter
 
+//适配器模式用于转换一种接口适配另一种接口
+
 //Target 是适配的目标接口
 type Target interface {
 	Request() string

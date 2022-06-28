@@ -2,7 +2,7 @@ package command
 
 
 func ExampleCommand() {
-	mb := &MotherBoard{}
+	mb := &MotherBoard{}				//只有一份
 	startCommand := NewStartCommand(mb)
 	rebootCommand := NewRebootCommand(mb)
 

@@ -13,8 +13,9 @@ func TestType1(t *testing.T) {
 		t.Fatal("Type1 test fail")
 	}
 
-	if hi,ok := api.(*hiAPI); ok{
-		fmt.Println( hi.Hello("Tom") )
+	if hi, ok := api.(*hiAPI); ok{
+		*hi = 2
+		fmt.Println( hi.Hello("Tom"), "value: ", *hi )
 	}
 }
 

@@ -2,6 +2,8 @@ package visitor
 
 import "fmt"
 
+//可以给一系列对象透明的添加功能，并且把相关代码封装到一个类中
+
 type Customer interface {
 	Accept(Visitor)
 }
@@ -10,7 +12,7 @@ type Visitor interface {
 	Visit(Customer)
 }
 
-type CustomerCol struct {
+type CustomerCol struct {				//控制类
 	customers []Customer
 }
 
@@ -18,7 +20,7 @@ func (c *CustomerCol) Add(customer Customer) {
 	c.customers = append(c.customers, customer)
 }
 
-func (c *CustomerCol) Accept(visitor Visitor) {
+func (c *CustomerCol) Accept1(visitor Visitor) {
 	for _, customer := range c.customers {
 		customer.Accept(visitor)
 	}

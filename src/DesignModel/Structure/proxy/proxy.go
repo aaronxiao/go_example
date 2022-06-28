@@ -1,5 +1,7 @@
 package proxy
 
+//代理模式用于延迟处理操作或者在进行实际操作前后进行其它处理
+
 type Subject interface {
 	Do() string
 }
@@ -11,6 +13,7 @@ func (RealSubject) Do() string {
 }
 
 type Proxy struct {
+	// RealSubject		//
 	real RealSubject		//小写
 }
 

@@ -12,7 +12,7 @@ type API interface {
 //NewAPI return Api instance by type
 func NewAPI(t int) API {
 	if t == 1 {
-		return &hiAPI{}
+		return new(hiAPI)
 	} else if t == 2 {
 		return &helloAPI{}
 	}
@@ -20,7 +20,7 @@ func NewAPI(t int) API {
 }
 
 //hiAPI is one of API implement
-type hiAPI struct{}
+type hiAPI int
 
 //Say hi to name
 func (*hiAPI) Say(name string) string {
@@ -28,7 +28,7 @@ func (*hiAPI) Say(name string) string {
 }
 
 func (*hiAPI) Hello(name string) string {
-	return fmt.Sprintf("Hello, %s", name)
+	return fmt.Sprintf("Hello, %s ", name)
 }
 
 //HelloAPI is another API implement

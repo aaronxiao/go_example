@@ -1,6 +1,6 @@
 package templateMethod
 
-
+//注意下面的Output是有用的
 func ExampleHTTPDownloader() {
 	var downloader Downloader = NewHTTPDownloader()
 

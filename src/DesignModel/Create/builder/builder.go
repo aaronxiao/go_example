@@ -1,7 +1,7 @@
 package builder
 
 
-//Builder 是生成器接口
+//Builder 是生成器接口   将一个复杂对象的构建分离成多个简单对象的构建组合
 type Builder interface {
 	Part1()
 	Part2()

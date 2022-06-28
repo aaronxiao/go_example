@@ -5,6 +5,8 @@ import (
 	"strings"
 )
 
+//封装对象之间互交，使依赖变的简单，并且使复杂互交简单化，封装在中介者中
+
 type CDDriver struct {
 	Data string
 }
@@ -50,7 +52,7 @@ func (s *SoundCard) Play(data string) {
 	GetMediatorInstance().changed(s)
 }
 
-type Mediator struct {
+type Mediator struct {					//所有类型封装在一起   不同类型通过changed方法做依赖交互
 	CD    *CDDriver
 	CPU   *CPU
 	Video *VideoCard

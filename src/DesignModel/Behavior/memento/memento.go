@@ -1,16 +1,18 @@
 package memento
 
-
 import "fmt"
+
+//用于保存程序内部状态到外部，又不希望暴露内部状态的情形
 
 type Memento interface{}
 
-type Game struct {
-	hp, mp int			//小写  不暴露
-}
 
 type gameMemento struct {
 	hp, mp int
+}
+
+type Game struct {
+	hp, mp int			//小写  不暴露
 }
 
 func (g *Game) Play(mpDelta, hpDelta int) {

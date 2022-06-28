@@ -2,6 +2,8 @@ package observer
 
 import "fmt"
 
+//用于触发联动， 一个对象的改变会触发其它观察者的相关动作，而此对象无需关心连动对象的具体实现
+
 type Subject struct {
 	observers []Observer
 	context   string
