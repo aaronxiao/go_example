@@ -181,7 +181,7 @@ func main() {
 		panic("GetCurPwd path is empty")
 		return
 	}
-	conf.InitConfig(path + "\\config.ini")
+	conf.InitConfig(path + "\\config3.ini")
 
 	addr := "127.0.0.1:30000"
 	if remote := conf.ReadConf("client", "remote"); strings.Compare(remote, "1") == 0 {

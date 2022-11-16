@@ -27,3 +27,20 @@ func (p *PrototypeManager) Set(name string, prototype Cloneable) {
 	p.prototypes[name] = prototype
 }
 
+type Type1 struct {
+	name string
+}
+
+func (t *Type1) Clone() Cloneable {
+	tc := *t
+	return &tc
+}
+
+type Type2 struct {
+	name string
+}
+
+func (t *Type2) Clone() Cloneable {
+	tc := *t
+	return &tc
+}

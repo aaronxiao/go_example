@@ -170,7 +170,7 @@ func main() {
 		panic("GetCurPwd path is empty")
 		return
 	}
-	conf.InitConfig(path + "\\config.ini")
+	conf.InitConfig(path + "\\config3.ini")
 
 	addr := "192.168.56.101:9002"
 	//tcpAddr := conf.ReadConf("host", "tcpAddr")

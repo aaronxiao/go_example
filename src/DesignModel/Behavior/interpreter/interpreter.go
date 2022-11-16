@@ -50,6 +50,7 @@ func (p *Parser) Parse(exp string) {
 		if p.index >= len(p.exp) {
 			return
 		}
+		fmt.Println(p.exp[p.index], p.index)
 		switch p.exp[p.index] {
 		case "+":
 			p.prev = p.newAddNode()

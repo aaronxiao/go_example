@@ -30,14 +30,15 @@ func (a *apiImpl) Test() string {
 	return fmt.Sprintf("%s\n%s", aRet, bRet)
 }
 
-//NewAModuleAPI return new AModuleAPI
-func NewAModuleAPI() AModuleAPI {
-	return &aModuleImpl{}
-}
 
 //AModuleAPI ...
 type AModuleAPI interface {
 	TestA() string
+}
+
+//NewAModuleAPI return new AModuleAPI
+func NewAModuleAPI() AModuleAPI {
+	return &aModuleImpl{}
 }
 
 type aModuleImpl struct{}
@@ -46,14 +47,15 @@ func (*aModuleImpl) TestA() string {
 	return "A module running"
 }
 
-//NewBModuleAPI return new BModuleAPI
-func NewBModuleAPI() BModuleAPI {
-	return &bModuleImpl{}
-}
 
 //BModuleAPI ...
 type BModuleAPI interface {
 	TestB() string
+}
+
+//NewBModuleAPI return new BModuleAPI
+func NewBModuleAPI() BModuleAPI {
+	return &bModuleImpl{}
 }
 
 type bModuleImpl struct{}

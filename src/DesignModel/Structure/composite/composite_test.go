@@ -1,7 +1,7 @@
 package composite
 
 
-
+//相同类型的归类  比如说菜单 文件目录等
 func ExampleComposite() {
 	root := NewComponent(CompositeNode, "root")
 	c1 := NewComponent(CompositeNode, "c1")

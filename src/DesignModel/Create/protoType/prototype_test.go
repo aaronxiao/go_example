@@ -1,28 +1,8 @@
 package protoType
 
-
-
 import "testing"
 
 var manager *PrototypeManager
-
-type Type1 struct {
-	name string
-}
-
-func (t *Type1) Clone() Cloneable {
-	tc := *t
-	return &tc
-}
-
-type Type2 struct {
-	name string
-}
-
-func (t *Type2) Clone() Cloneable {
-	tc := *t
-	return &tc
-}
 
 func TestClone(t *testing.T) {
 	t1 := manager.Get("t1")

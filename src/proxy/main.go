@@ -85,7 +85,7 @@ func main()  {
 		return
 	}
 
-	conf.InitConfig(path + "\\config.ini" )
+	conf.InitConfig(path + "\\config3.ini" )
 
 	hashConsistent = common.NewConsistent()
 	//采用一致性hash算法，添加节点

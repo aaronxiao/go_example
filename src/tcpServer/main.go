@@ -36,10 +36,10 @@ func init()  {
 }
 
 func PickOneUid() int32  {
-	//defer global.lock.Unlock()
-	//global.lock.Lock()
-	//global.StartUid++
-	//return global.StartUid
+	//defer global5.lock.Unlock()
+	//global5.lock.Lock()
+	//global5.StartUid++
+	//return global5.StartUid
 
 	new := atomic.AddInt32(&global.StartUid, 3) //加操作
 	return new
@@ -212,9 +212,9 @@ func main() {
 	}
 
 	if runtime.GOOS != "windows"  {
-		conf.InitConfig(path + "//config.ini" )
+		conf.InitConfig(path + "//config3.ini" )
 	}else {
-		conf.InitConfig(path + "\\config.ini" )
+		conf.InitConfig(path + "\\config3.ini" )
 	}
 	tcpAddr := conf.ReadConf("host", "tcpAddr")
 	tcpPort := conf.ReadConf("host", "tcpPort")

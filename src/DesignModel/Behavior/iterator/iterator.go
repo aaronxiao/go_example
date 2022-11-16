@@ -14,10 +14,11 @@ type Iterator interface {
 	Next() interface{}
 }
 
-
+//Aggregate接口实现
 type Numbers struct {
 	start, end int
 }
+
 func NewNumbers(start, end int) *Numbers {
 	return &Numbers{
 		start: start,
@@ -31,12 +32,12 @@ func (n *Numbers) Iterator() Iterator {
 	}
 }
 
-
-
+//Iterator接口实现 用来迭代
 type NumbersIterator struct {
 	numbers *Numbers
 	next    int
 }
+
 func (i *NumbersIterator) First() {
 	i.next = i.numbers.start
 }
@@ -51,7 +52,6 @@ func (i *NumbersIterator) Next() interface{} {
 	}
 	return nil
 }
-
 
 func IteratorPrint(i Iterator) {
 	for i.First(); !i.IsDone(); {

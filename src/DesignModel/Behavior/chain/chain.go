@@ -9,8 +9,8 @@ type Manager interface {
 
 //链表类型
 type RequestChain struct {
-	Manager							//接口类型
-	successor *RequestChain			//指针类型  指向下一个RequestChain
+	Manager                 //接口类型
+	successor *RequestChain //指针类型  指向下一个RequestChain
 }
 
 func (r *RequestChain) SetSuccessor(m *RequestChain) {
@@ -18,11 +18,11 @@ func (r *RequestChain) SetSuccessor(m *RequestChain) {
 }
 
 func (r *RequestChain) HandleFeeRequest(name string, money int) bool {
-	fmt.Printf("1111111111111111111\n")
+	//fmt.Printf("1111111111111111111\n")
 	if r.Manager.HaveRight(money) {
 		return r.Manager.HandleFeeRequest(name, money)
 	}
-	if r.successor != nil {		//关键在这里   successor指向的是RequestChain 这里相当于递归调用
+	if r.successor != nil { //关键在这里   successor指向的是RequestChain 这里相当于递归调用
 		return r.successor.HandleFeeRequest(name, money)
 	}
 	return false

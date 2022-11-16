@@ -1,29 +1,23 @@
 package main
-import (
-	"flag"
-	"fmt"
-	"sync/atomic"
-	"time"
-)
+
+import "fmt"
+
+func test()(int, error)  {
+	return 0, nil
+}
+
+// 连接复制
+func ConnCopy(ch chan error) {
+	_, err := test()
+	ch <- err
+}
 
 func main() {
-	fmt.Println("USAGE: ./GameServer -c ../conf/server.ini --sid 8777  -d")
-	flag.PrintDefaults()
+	ch := make(chan error, 1)
+	go ConnCopy(ch)
+	//go ConnCopy(ch)
+	fmt.Println( <-ch)
+	fmt.Println("1111111111111")
 
-	var opts int64 = 0
 
-	for k := 0; k < 1 ;k++ {
-		go func() {
-			for i := 0; i < 50; i++ {
-				// 注意第一个参数必须是地址
-				new := atomic.AddInt64(&opts, 3) //加操作
-				fmt.Println("opts: ", new)
-				//atomic.AddInt64(&opts, -1) 减操作
-				time.Sleep(time.Millisecond)
-			}
-		}()
-	}
-	time.Sleep(time.Second)
-
-	fmt.Println("opts: ", atomic.LoadInt64(&opts))
 }

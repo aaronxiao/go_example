@@ -13,6 +13,7 @@ type implement interface {
 	save()
 }
 
+//
 type template struct {
 	implement
 	uri string
@@ -23,6 +24,7 @@ func newTemplate(impl implement) *template {
 		implement: impl,
 	}
 }
+
 var _ implement = new(template)
 
 func (t *template) Download(uri string) {
@@ -33,7 +35,7 @@ func (t *template) Download(uri string) {
 	fmt.Print("finish downloading\n")
 }
 
-func (t *template) save() {					//实现了一个通过save方法
+func (t *template) save() { //实现了一个通过save方法
 	fmt.Print("default save\n")
 }
 
@@ -43,8 +45,8 @@ type HTTPDownloader struct {
 
 func NewHTTPDownloader() Downloader {
 	downloader := &HTTPDownloader{}
-	template := newTemplate(downloader)
-	downloader.template = template
+	template1 := newTemplate(downloader)
+	downloader.template = template1
 	return downloader
 }
 
@@ -57,7 +59,7 @@ func (*HTTPDownloader) save() {
 }
 
 type FTPDownloader struct {
-	*template				//指针类型也可以继承save方法
+	*template //指针类型也可以继承save方法
 }
 
 func NewFTPDownloader() Downloader {

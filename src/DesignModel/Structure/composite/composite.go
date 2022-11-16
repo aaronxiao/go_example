@@ -1,5 +1,6 @@
 package composite
 
+
 import "fmt"
 
 
@@ -58,7 +59,7 @@ func (c *component) AddChild(Component) {}
 func (c *component) Print(string) {}
 
 type Leaf struct {
-	component
+	component //匿名组合
 }
 
 func NewLeaf() *Leaf {
@@ -70,7 +71,7 @@ func (c *Leaf) Print(pre string) {
 }
 
 type Composite struct {
-	component
+	component   //匿名组合
 	childs []Component
 }
 
